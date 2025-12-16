@@ -1,5 +1,5 @@
 {
-    "name": "creode/wordpress-theme",
+    "name": "creode-mosaic/theme",
     "description": "A theme installation and development framework.",
     "type": "wordpress-muplugin",
     "authors": [
@@ -7,6 +7,9 @@
             "name": "Creode Limited"
         }
     ],
+    "replace": {
+      "creode/wordpress-theme":"*"
+    },
     "require": {
         "idleberg/vite-manifest": "^1.1",
         "creode/mu-plugin-installer": "*"
