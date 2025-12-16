@@ -7,7 +7,7 @@
  * Author: Creode
  * Author URI: https://www.creode.co.uk/
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 // This is a loader for the plugin from the parent directory to handle MU Plugin installation.

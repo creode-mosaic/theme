@@ -2,7 +2,7 @@
 /**
  * Class to facilitate the enqueueing of theme assets.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

@@ -3,7 +3,7 @@
  * Base post fields class.
  * Registers a new field group against posts that have a given support.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
  namespace Creode_Theme;

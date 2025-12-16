@@ -2,7 +2,7 @@
 /**
  * Helper functions.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

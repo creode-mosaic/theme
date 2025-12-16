@@ -2,7 +2,7 @@
 /**
  * File to load command classes.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 require_once __DIR__ . '/class-command-message-handler.php';

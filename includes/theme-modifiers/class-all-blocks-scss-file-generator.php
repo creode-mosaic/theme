@@ -2,7 +2,7 @@
 /**
  * Class to generate the SCSS file that invokes render mixins for all block stylesheets.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

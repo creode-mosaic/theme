@@ -1,8 +1,8 @@
 <?php
 /**
- * Creode Theme MU plugin.
+ * Mosaic Theme MU plugin.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

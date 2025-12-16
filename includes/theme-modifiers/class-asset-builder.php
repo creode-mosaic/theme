@@ -2,7 +2,7 @@
 /**
  * Class to compile front-end assets.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

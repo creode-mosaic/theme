@@ -2,7 +2,7 @@
 /**
  * File to load theme modifier classes.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 require_once __DIR__ . '/class-all-blocks-scss-file-generator.php';

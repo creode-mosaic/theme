@@ -2,7 +2,7 @@
 /**
  * A class to handle command line feedback messages.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

@@ -2,7 +2,7 @@
 /**
  * Class to store details about a taxonomy used by a specific class.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

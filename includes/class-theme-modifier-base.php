@@ -3,7 +3,7 @@
  * Abstract theme modifier class.
  * Used when modifications must be made to a single theme or all themes.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

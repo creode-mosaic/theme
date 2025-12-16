@@ -4,7 +4,7 @@
  *
  * This file loads all bug fixes for WordPress core issues.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 // Prevent direct access.

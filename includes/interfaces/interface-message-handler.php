@@ -2,7 +2,7 @@
 /**
  * Interface to handle messages to the user.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

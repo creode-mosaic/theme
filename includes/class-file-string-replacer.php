@@ -2,7 +2,7 @@
 /**
  * Handles the replacement of strings within text file content.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

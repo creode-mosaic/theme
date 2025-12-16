@@ -2,7 +2,7 @@
 /**
  * Command to invoke the installation of theme files.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

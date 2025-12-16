@@ -2,7 +2,7 @@
 /**
  * File register JavaScript libraries.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 /**

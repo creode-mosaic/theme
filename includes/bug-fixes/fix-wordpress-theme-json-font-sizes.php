@@ -6,7 +6,7 @@
  * are not properly loaded. Intercepts default font size processing and
  * applies theme's intended font size values.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 // Prevent direct access.

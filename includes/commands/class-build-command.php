@@ -2,7 +2,7 @@
 /**
  * Command to invoke the compilation of theme assets.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 namespace Creode_Theme;

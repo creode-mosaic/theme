@@ -2,7 +2,7 @@
 /**
  * File to load interfaces.
  *
- * @package Creode Theme
+ * @package Mosaic Theme
  */
 
 require_once __DIR__ . '/interface-message-handler.php';
