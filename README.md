@@ -16,12 +16,6 @@ composer require creode-mosaic/theme
 
 This will automatically install the plugin into your `mu-plugins` directory.
 
-### Manual Installation
-
-1. Download the plugin from the repository
-2. Upload to your WordPress `mu-plugins` directory
-3. Create the required loader file
-
 ## Features
 
 ### WP-CLI Commands
@@ -33,20 +27,6 @@ The plugin provides two WP-CLI commands for theme management:
 | `wp creode-theme:install` | Installs framework files into your active theme (or a specified theme) |
 | `wp creode-theme:build` | Compiles assets (SCSS/JS) for all active themes |
 
-**Examples:**
-```bash
-# Install to the active theme
-wp creode-theme:install
-
-# Install to a specific theme
-wp creode-theme:install my-child-theme
-
-# Force overwrite existing files
-wp creode-theme:install --force
-
-# Build assets for all themes
-wp creode-theme:build
-```
 
 ### Asset Compilation
 
@@ -56,7 +36,6 @@ The framework uses **Vite** for modern asset bundling with the following feature
 - JavaScript bundling and minification
 - Manifest-based asset versioning
 - Support for parent/child theme structures
-- Hot Module Replacement (HMR) during development
 - Automatic stylesheet enqueueing for frontend, admin, and editor
 
 ### PHP Libraries
@@ -143,7 +122,7 @@ your-theme/
 - PHP 8.0+
 - Composer
 - Node.js & npm (for asset compilation)
-- ACF Pro (optional, for Post Fields functionality)
+- ACF Pro
 
 ## Documentation
 
