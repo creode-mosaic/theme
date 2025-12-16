@@ -2,6 +2,7 @@
     "name": "creode-mosaic/theme",
     "description": "A theme installation and development framework.",
     "type": "wordpress-muplugin",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Creode Limited"
