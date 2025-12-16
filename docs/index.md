@@ -3,12 +3,12 @@ outline: deep
 ---
 
 # Introduction
-This project is a simple WordPress plugin containing the Creode WordPress Theme Framework.
+This project is a simple WordPress plugin containing the Creode Mosaic Theme Framework.
 
 ## Plugin Features
-This plugin provides a simple way to install the Creode WordPress Theme Framework. It contains functionality that will allow for the simple compilation and handling of assets. It can facilitate the following:
+This plugin provides a simple way to install the Creode Mosaic Theme Framework. It contains functionality that will allow for the simple compilation and handling of assets. It can facilitate the following:
 
-- Installation of the Creode WordPress Theme Framework
+- Installation of the Creode Mosaic Theme Framework
 - Compilation of assets
 - Providing a simple way to keep track of theme framework files and give a single location to manage SCSS and theme related files.
 - Allow the sharing of new theme files and systems across multiple themes.
