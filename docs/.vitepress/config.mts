@@ -2,8 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "WordPress Theme Framework - Documentation",
-  description: "Documentation for Creode's WordPress Theme Framework.",
+  title: "Mosaic Theme Framework",
+  description: "Documentation for Creode's Mosaic Theme Framework.",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
