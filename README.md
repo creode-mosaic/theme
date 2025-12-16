@@ -97,24 +97,7 @@ blockStyleModifier.removeStyle('core/button', 'outline');
 
 ### Theme Template
 
-When running `wp creode-theme:install`, the following structure is scaffolded:
-
-```
-your-theme/
-├── blocks/           # Custom block SCSS
-├── includes/
-│   ├── post-types/   # Custom post type classes
-│   └── post-fields/  # ACF field group classes
-├── js/admin/         # Admin JavaScript (block styles)
-├── scss/             # SCSS source files
-│   ├── main.scss     # Frontend styles
-│   ├── admin.scss    # Admin/editor styles
-│   ├── mixins/       # SCSS mixins
-│   └── extenders/    # SCSS extenders
-├── vite-entry-points/
-├── vite.config.js
-└── package.json
-```
+When running `wp creode-theme:install`, a basic theme structure is scaffolded within the active theme.
 
 ## Requirements
 
