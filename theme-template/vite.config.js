@@ -45,7 +45,7 @@ export default defineConfig(
 			},
 			resolve: {
 				alias: {
-					'@block-library': '/../../mu-plugins/wordpress-blocks/blocks',
+					'@block-library': '/../../mu-plugins/blocks/blocks',
 				},
 			},
 		}
