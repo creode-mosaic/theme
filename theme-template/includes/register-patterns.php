@@ -8,7 +8,5 @@
 
 use Creode_Theme\Helpers;
 
-/**
- * Example: Create a pattern by calling Helpers::make_pattern() with slug, name, and content.
- * Helpers::make_pattern( 'teaser', 'Teaser', '<!-- wp:acf/teaser {"name":"acf/teaser","data":[],"mode":"preview"} --><!-- /wp:acf/teaser -->' );
- */
+// @example: Uncomment to create a pattern by calling Helpers::make_pattern() with slug, name, and content.
+// Helpers::make_pattern( 'teaser', 'Teaser', '<!-- wp:acf/teaser {"name":"acf/teaser","data":[],"mode":"preview"} --><!-- /wp:acf/teaser -->' );
