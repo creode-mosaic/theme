@@ -6,7 +6,7 @@
  * @package Mosaic Theme
  */
 
- namespace Creode_Theme;
+namespace Creode_Theme;
 
 /**
  * Base extra post fields class.
