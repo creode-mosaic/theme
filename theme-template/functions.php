@@ -34,3 +34,6 @@ require_once __DIR__ . '/includes/register-scripts.php';
 
 // Register any stylesheet depandancies.
 require_once __DIR__ . '/includes/register-stylesheet-dependencies.php';
+
+// Integrate Google Tag Manager.
+require_once __DIR__ . '/includes/google-tag-manager.php';
