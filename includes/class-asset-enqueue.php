@@ -8,6 +8,7 @@
 namespace Creode_Theme;
 
 use Idleberg\ViteManifest\Manifest;
+use WP_Scripts;
 
 /**
  * Class to facilitate the enqueueing of theme assets.
@@ -70,6 +71,7 @@ final class Asset_Enqueue {
 		$this->enqueue_main_stylesheets();
 		$this->enqueue_admin_stylesheets();
 		$this->enqueue_editor_stylesheets();
+		$this->register_javascript_libraries();
 	}
 
 	/**
@@ -266,5 +268,61 @@ final class Asset_Enqueue {
 			);
 			break;
 		}
+	}
+
+	/**
+	 * Registers JavaScript libraries.
+	 */
+	private function register_javascript_libraries() {
+		/**
+		 * Registers JavaScript libraries.
+		 *
+		 * @var callable $register
+		 */
+		$register = function () {
+			// Register jQuery Match Height.
+			if ( apply_filters( 'mosaic_theme_register_match_height_js', true ) ) {
+				wp_register_script( 'match-height', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js', array( 'jquery' ), '0.7.2', true );
+			}
+
+			// Register Slick.
+			if ( apply_filters( 'mosaic_theme_register_slick_js', true ) ) {
+				wp_register_script( 'slick', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array( 'jquery' ), '1.8.1', true );
+			}
+		};
+
+		// Register front-end scripts.
+		add_action(
+			'wp_enqueue_scripts',
+			function () use ( $register ) {
+				$register();
+			}
+		);
+
+		// Register admin scripts.
+		add_action(
+			'admin_enqueue_scripts',
+			function () use ( $register ) {
+				$register();
+			}
+		);
+
+		// Register block editor admin scripts.
+		add_action(
+			'enqueue_block_assets',
+			function () use ( $register ) {
+				if ( ! is_admin() ) {
+					return;
+				}
+
+				// Ensure all default scripts are registered.
+				$wp_scripts = new WP_Scripts();
+				wp_default_scripts( $wp_scripts );
+				wp_default_packages_vendor( $wp_scripts );
+				wp_default_packages_scripts( $wp_scripts );
+
+				$register();
+			}
+		);
 	}
 }
