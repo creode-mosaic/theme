@@ -73,7 +73,7 @@ final class Helpers {
 			return $default_version;
 		}
 
-		$version = InstalledVersions::getPrettyVersion( 'creode/wordpress-theme' );
+		$version = InstalledVersions::getPrettyVersion( 'creode-mosaic/theme' );
 
 		if ( is_null( $version ) ) {
 			return $default_version;
