@@ -8,7 +8,12 @@
 
 use Creode_Theme\Asset_Enqueue;
 
-// Asset_Enqueue::get_instance()->add_stylesheet_dependency(
-// 	'typekit',
-// 	'https://use.typekit.net/example.css'
-// );
+/**
+ * Get the Asset_Enqueue instance.
+ *
+ * @var Asset_Enqueue $asset_enqueue
+ */
+$asset_enqueue = Asset_Enqueue::get_instance();
+
+// @example: Uncomment to add a stylesheet dependency.
+// $asset_enqueue->add_stylesheet_dependency( 'typekit', 'https://use.typekit.net/example.css' );
