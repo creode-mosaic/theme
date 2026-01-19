@@ -1,0 +1,14 @@
+build_languages:
+  - name: "node"
+    version: "22"
+  - name: "php"
+    version: "8.3"
+
+build_commands:
+  - description: "Build Documentation"
+    command: "npm install \n npm run docs:build"
+    halt_on_error: true
+
+build_cache_files:
+  - path: node_modules/**
+  - path: public/**

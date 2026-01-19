@@ -5,3 +5,6 @@
 # Node Dependencies
 /package-lock.json
 node_modules
+
+public/*
+!public/.gitkeep
