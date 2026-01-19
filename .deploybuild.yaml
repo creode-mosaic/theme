@@ -6,7 +6,7 @@ build_languages:
 
 build_commands:
   - description: "Build Documentation"
-    command: "npm install \n npm run build"
+    command: "npm install \n npm run docs:build"
     halt_on_error: true
 
 build_cache_files:
