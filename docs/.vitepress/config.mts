@@ -2,6 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  outDir: '../public',
+
   title: "Mosaic Theme Framework",
   description: "Documentation for Creode's Mosaic Theme Framework.",
   themeConfig: {
