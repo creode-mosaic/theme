@@ -19,6 +19,7 @@ export default defineConfig({
         items: [
           { text: 'Introduction', link: '/' },
           { text: 'Installation', link: '/installation' },
+          { text: 'Changelog', link: '/changelog' },
           { text: 'Migrating from Theme Core', link: '/migrating-from-theme-core' }
         ]
       },
