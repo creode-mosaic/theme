@@ -21,6 +21,7 @@ require_once __DIR__ . '/includes/interfaces/all.php';
 require_once __DIR__ . '/includes/abstracts/all.php';
 require_once __DIR__ . '/includes/class-helpers.php';
 require_once __DIR__ . '/includes/class-file-string-replacer.php';
+require_once __DIR__ . '/includes/class-file-pre-processor.php';
 require_once __DIR__ . '/includes/class-theme-modifier-base.php';
 require_once __DIR__ . '/includes/theme-modifiers/all.php';
 require_once __DIR__ . '/includes/class-installer.php';

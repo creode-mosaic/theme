@@ -20,6 +20,13 @@ class Installer {
 	private $file_string_replacer;
 
 	/**
+	 * The file pre processor.
+	 *
+	 * @var File_Pre_Processor
+	 */
+	private $file_pre_processor;
+
+	/**
 	 * The theme directory name to install theme files.
 	 *
 	 * @var string
@@ -32,6 +39,13 @@ class Installer {
 	 * @var string
 	 */
 	private $theme_label;
+
+	/**
+	 * The comment string to check for in the comment block.
+	 *
+	 * @var string
+	 */
+	private $comment_string = '#mosaic-theme-generated';
 
 	/**
 	 * A message handler to provide any feedback to the user.
@@ -49,6 +63,7 @@ class Installer {
 	public function __construct( string|null $theme_name = null, Message_Handler|null $message_handler = null ) {
 		$this->message_handler      = $message_handler;
 		$this->file_string_replacer = File_String_Replacer::get_instance();
+		$this->file_pre_processor   = File_Pre_Processor::get_instance();
 
 		if ( is_null( $theme_name ) ) {
 			$theme_name = get_stylesheet();
@@ -111,6 +126,9 @@ class Installer {
 			! $force,
 			function ( string $source_file_path, $destination_file_path ) {
 				$this->file_string_replacer->replace( $destination_file_path );
+			},
+			function ( string $source_file_path, string $destination_file_path ) {
+				return $this->file_pre_processor->file_contains_string( $destination_file_path, $this->comment_string );
 			}
 		);
 	}
