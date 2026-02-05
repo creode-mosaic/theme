@@ -22,9 +22,9 @@ class Installer {
 	/**
 	 * The file pre processor.
 	 *
-	 * @var File_Pre_Processor
+	 * @var File_Merge_Filter
 	 */
-	private $file_pre_processor;
+	private $file_merge_filter;
 
 	/**
 	 * The theme directory name to install theme files.
@@ -39,13 +39,6 @@ class Installer {
 	 * @var string
 	 */
 	private $theme_label;
-
-	/**
-	 * The comment string to check for in the comment block.
-	 *
-	 * @var string
-	 */
-	private $comment_string = '#mosaic-theme-generated';
 
 	/**
 	 * A message handler to provide any feedback to the user.
@@ -63,7 +56,7 @@ class Installer {
 	public function __construct( string|null $theme_name = null, Message_Handler|null $message_handler = null ) {
 		$this->message_handler      = $message_handler;
 		$this->file_string_replacer = File_String_Replacer::get_instance();
-		$this->file_pre_processor   = File_Pre_Processor::get_instance();
+		$this->file_merge_filter    = File_Merge_Filter::get_instance();
 
 		if ( is_null( $theme_name ) ) {
 			$theme_name = get_stylesheet();
@@ -120,15 +113,15 @@ class Installer {
 	 * @param bool $force (Optional) Whether theme files will be overidden. If omitted, theme files will only be created if they do not exist. Defaults to false if not specified.
 	 */
 	private function copy_theme_files( bool $force = false ) {
+
 		Helpers::copy_directory(
 			__DIR__ . '/../theme-template',
 			get_theme_root() . '/' . $this->theme_name,
-			! $force,
+			function ( string $source_file_path, string $destination_file_path ) use ( $force ): bool {
+				return $this->file_merge_filter->should_merge( $force, $destination_file_path );
+			},
 			function ( string $source_file_path, $destination_file_path ) {
 				$this->file_string_replacer->replace( $destination_file_path );
-			},
-			function ( string $source_file_path, string $destination_file_path ) {
-				return $this->file_pre_processor->file_contains_string( $destination_file_path, $this->comment_string );
 			}
 		);
 	}

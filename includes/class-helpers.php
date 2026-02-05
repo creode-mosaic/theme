@@ -17,13 +17,12 @@ final class Helpers {
 	/**
 	 * Performs a deep copy of files.
 	 *
-	 * @param string        $source_directory_path A path to the directory to copy.
+	 * @param string        $source_directory_path      A path to the directory to copy.
 	 * @param string        $destination_directory_path A path to the directory where files should be placed.
-	 * @param bool          $merge (Optional) If true pre-existing destination files will not be overridden. Defaults to true.
-	 * @param callable|null $file_post_processor (Optional) A function to preform additional processing on each file. This function will be provided with two arguments, the source file path and the destination file path.
-	 * @param callable|null $file_pre_processor (Optional) A function to preform additional processing on each file before it is copied. This function will be provided with two arguments, the source file path and the destination file path.
+	 * @param bool|callable $merge                      (Optional) When true, pre-existing files are not overridden. When a callable, it receives (source_path, destination_path) and returns true to skip (preserve) or false to allow override. When false, files are always overridden. Defaults to true.
+	 * @param callable|null $file_post_processor        (Optional) A function to preform additional processing on each file. This function will be provided with two arguments, the source file path and the destination file path.
 	 */
-	public static function copy_directory( string $source_directory_path, string $destination_directory_path, bool $merge = true, callable|null $file_post_processor = null, callable|null $file_pre_processor = null ) {
+	public static function copy_directory( string $source_directory_path, string $destination_directory_path, bool|callable $merge = true, callable|null $file_post_processor = null ) {
 		// If destination directory doesn't exist, create it.
 		if ( ! is_dir( $destination_directory_path ) ) {
 				// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir
@@ -39,12 +38,12 @@ final class Helpers {
 
 			// If a sub-directory is found, recursively copy it's files.
 			if ( is_dir( $source_directory_path . '/' . $file ) ) {
-				self::copy_directory( $source_directory_path . '/' . $file, $destination_directory_path . '/' . $file, $merge, $file_post_processor, $file_pre_processor );
+				self::copy_directory( $source_directory_path . '/' . $file, $destination_directory_path . '/' . $file, $merge, $file_post_processor );
 				continue;
 			}
 
-			// Bypass if $merge is true and destination file already exists and the pre-processor returns false.
-			if ( $merge && file_exists( $destination_directory_path . '/' . $file ) && ! call_user_func( $file_pre_processor, $source_directory_path . '/' . $file, $destination_directory_path . '/' . $file ) ) {
+			// Bypass when merge mode is enabled and destination file already exists.
+			if ( file_exists( $destination_directory_path . '/' . $file ) && is_callable( $merge ) && $merge( $source_directory_path . '/' . $file, $destination_directory_path . '/' . $file ) ) {
 				continue;
 			}
 
