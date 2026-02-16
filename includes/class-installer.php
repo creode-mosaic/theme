@@ -20,13 +20,6 @@ class Installer {
 	private $file_string_replacer;
 
 	/**
-	 * The file pre processor.
-	 *
-	 * @var File_Merge_Filter
-	 */
-	private $file_merge_filter;
-
-	/**
 	 * The theme directory name to install theme files.
 	 *
 	 * @var string
@@ -48,6 +41,13 @@ class Installer {
 	private $message_handler;
 
 	/**
+	 * A comment string to identify generated files.
+	 *
+	 * @var string
+	 */
+	private $generated_comment_string = '#mosaic-theme-generated';
+
+	/**
 	 * Initializes the object with a theme name.
 	 *
 	 * @param string|null          $theme_name (Optional) The theme directory name. If null or unspecified the active theme will be used.
@@ -56,7 +56,6 @@ class Installer {
 	public function __construct( string|null $theme_name = null, Message_Handler|null $message_handler = null ) {
 		$this->message_handler      = $message_handler;
 		$this->file_string_replacer = File_String_Replacer::get_instance();
-		$this->file_merge_filter    = File_Merge_Filter::get_instance();
 
 		if ( is_null( $theme_name ) ) {
 			$theme_name = get_stylesheet();
@@ -108,18 +107,42 @@ class Installer {
 	}
 
 	/**
+	 * Determines whether a file should be merged.
+	 *
+	 * @param string $destination_file_path The path to the destination file.
+	 * @return bool Whether the file should be merged.
+	 */
+	private function should_merge( string $destination_file_path ): bool {
+		// Get the file contents.
+		$contents = file_get_contents( $destination_file_path );
+
+		// Return false if the file contains the comment string.
+		if ( str_contains( $contents, $this->generated_comment_string ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Copies theme files from the theme-template directory into the specified location.
 	 *
 	 * @param bool $force (Optional) Whether theme files will be overidden. If omitted, theme files will only be created if they do not exist. Defaults to false if not specified.
 	 */
 	private function copy_theme_files( bool $force = false ) {
 
+		if ( $force ) {
+			$merge = false;
+		} else {
+			$merge = function ( string $source_file_path, string $destination_file_path ): bool {
+				return $this->should_merge( $destination_file_path );
+			};
+		}
+
 		Helpers::copy_directory(
 			__DIR__ . '/../theme-template',
 			get_theme_root() . '/' . $this->theme_name,
-			function ( string $source_file_path, string $destination_file_path ) use ( $force ): bool {
-				return $this->file_merge_filter->should_merge( $force, $destination_file_path );
-			},
+			$merge,
 			function ( string $source_file_path, $destination_file_path ) {
 				$this->file_string_replacer->replace( $destination_file_path );
 			}
