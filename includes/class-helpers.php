@@ -42,14 +42,11 @@ final class Helpers {
 				continue;
 			}
 
-			// If $merge is a callable, call it to determine if the file should be merged.
-			if ( is_callable( $merge ) && $merge( $source_directory_path . '/' . $file, $destination_directory_path . '/' . $file ) ) {
-				continue;
-			}
-
-			// Bypass if $merge is boolean true and destination file already exists (when callable, merge decision was already made above).
-			if ( true === $merge && file_exists( $destination_directory_path . '/' . $file ) ) {
-				continue;
+			if ( file_exists( $destination_directory_path . '/' . $file ) ) {
+				// If $merge is a callable, call it to determine if the file should be merged.
+				if ( ( is_callable( $merge ) && $merge( $source_directory_path . '/' . $file, $destination_directory_path . '/' . $file ) ) || ( true === $merge ) ) {
+					continue;
+				}
 			}
 
 			// Copy the file.
