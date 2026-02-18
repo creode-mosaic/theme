@@ -1,11 +1,21 @@
+/**
+ * #mosaic-theme-generated: Mosaic Theme manages this file and may overwrite the file unless this comment is removed.
+ */
+
 // Use fonts
 @use 'fonts';
 
 // Use base elements
 @use 'base';
 
+// Use components
+@use 'components/all' as components;
+
 // Use blocks
 @use '/blocks/all' as blocks;
+
+// Use admin global
+@use 'admin-global';
 
 .edit-post-visual-editor,
 .edit-site-style-book__example-preview,
@@ -13,6 +23,12 @@
 	// Render base elements
 	@include base.render;
 
+	// Render components
+	@include components.render;
+
 	// Render blocks
 	@include blocks.render;
 }
+
+// Render admin global
+@include admin-global.render;

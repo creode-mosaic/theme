@@ -133,7 +133,7 @@ This change can be quite tedious to do manually however we want to ensure that a
 As part of the theme framework, there is a WordPress CLI command that will install any missing files and compile the assets. This ensures that the structure of the theme is kept consistent and that new files as part of the boilerplate can be added automatically to themes without having to keep track of them manually.
 
 ```bash
-wp creode-theme:install
+wp mosaic-theme:install
 ```
 
 You should now be able to see some new files in your theme alongside a new `vite-entry-points` folder with the new admin.js and main.js files. You should copy the contents of the `src/main.js` and `src/admin.js` files into the corresponding new `vite-entry-points` folder, apart from the import lines for scss as these should be updated to the new new `/scss/` folder.
@@ -222,5 +222,5 @@ Add the following to the `admin.scss` file:
 Once these steps have been completed, you will need to recompile the assets. This can be done by running the following WP CLI command:
 
 ```bash
-wp creode-theme:build
+wp mosaic-theme:build
 ```

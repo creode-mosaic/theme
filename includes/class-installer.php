@@ -41,6 +41,13 @@ class Installer {
 	private $message_handler;
 
 	/**
+	 * A comment string to identify generated files.
+	 *
+	 * @var string
+	 */
+	private $generated_comment_string = '#mosaic-theme-generated';
+
+	/**
 	 * Initializes the object with a theme name.
 	 *
 	 * @param string|null          $theme_name (Optional) The theme directory name. If null or unspecified the active theme will be used.
@@ -100,15 +107,38 @@ class Installer {
 	}
 
 	/**
+	 * Determines whether a file should be merged.
+	 *
+	 * @param string $destination_file_path The path to the destination file.
+	 * @return bool Whether the file should be merged.
+	 */
+	private function should_merge( string $destination_file_path ): bool {
+		// Get the file contents.
+		$contents = file_get_contents( $destination_file_path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+
+		// Return false if the file contains the comment string.
+		return ! str_contains( $contents, $this->generated_comment_string );
+	}
+
+	/**
 	 * Copies theme files from the theme-template directory into the specified location.
 	 *
 	 * @param bool $force (Optional) Whether theme files will be overidden. If omitted, theme files will only be created if they do not exist. Defaults to false if not specified.
 	 */
 	private function copy_theme_files( bool $force = false ) {
+
+		if ( $force ) {
+			$merge = false;
+		} else {
+			$merge = function ( string $source_file_path, string $destination_file_path ): bool {
+				return $this->should_merge( $destination_file_path );
+			};
+		}
+
 		Helpers::copy_directory(
 			__DIR__ . '/../theme-template',
 			get_theme_root() . '/' . $this->theme_name,
-			! $force,
+			$merge,
 			function ( string $source_file_path, $destination_file_path ) {
 				$this->file_string_replacer->replace( $destination_file_path );
 			}

@@ -1,3 +1,7 @@
+/**
+ * #mosaic-theme-generated: Mosaic Theme manages this file and may overwrite the file unless this comment is removed.
+ */
+
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 

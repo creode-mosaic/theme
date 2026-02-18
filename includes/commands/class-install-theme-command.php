@@ -44,10 +44,10 @@ class Install_Theme_Command extends Command_Base {
 	 * ## EXAMPLES
 	 *
 	 *     # Install files to the active theme
-	 *     $ wp creode-theme:install
+	 *     $ wp mosaic-theme:install
 	 *
 	 *     # Install files to a specific theme directory
-	 *     $ wp creode-theme:install my-child-theme
+	 *     $ wp mosaic-theme:install my-child-theme
 	 *
 	 * @param array $args Optional. Command arguments. [<theme-directory>].
 	 * @param array $assoc_args Optional. Associative array of command options. ['force' => bool].

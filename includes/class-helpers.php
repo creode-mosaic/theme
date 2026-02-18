@@ -17,12 +17,12 @@ final class Helpers {
 	/**
 	 * Performs a deep copy of files.
 	 *
-	 * @param string        $source_directory_path A path to the directory to copy.
+	 * @param string        $source_directory_path      A path to the directory to copy.
 	 * @param string        $destination_directory_path A path to the directory where files should be placed.
-	 * @param bool          $merge (Optional) If true pre-existing destination files will not be overridden. Defaults to true.
-	 * @param callable|null $file_post_processor (Optional) A function to preform additional processing on each file. This function will be provided with two arguments, the source file path and the destination file path.
+	 * @param bool|callable $merge                      (Optional) When true, pre-existing files are not overridden. When a callable, it receives (source_path, destination_path) and returns true to skip (preserve) or false to allow override. When false, files are always overridden. Defaults to true.
+	 * @param callable|null $file_post_processor        (Optional) A function to preform additional processing on each file. This function will be provided with two arguments, the source file path and the destination file path.
 	 */
-	public static function copy_directory( string $source_directory_path, string $destination_directory_path, bool $merge = true, callable|null $file_post_processor = null ) {
+	public static function copy_directory( string $source_directory_path, string $destination_directory_path, bool|callable $merge = true, callable|null $file_post_processor = null ) {
 		// If destination directory doesn't exist, create it.
 		if ( ! is_dir( $destination_directory_path ) ) {
 				// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir
@@ -42,9 +42,15 @@ final class Helpers {
 				continue;
 			}
 
-			// Bypass if $merge is true and destination file already exists.
-			if ( $merge && file_exists( $destination_directory_path . '/' . $file ) ) {
-				continue;
+			if ( file_exists( $destination_directory_path . '/' . $file ) ) {
+				// If $merge is a callable, call it to determine if the file should be merged.
+				if ( ( is_callable( $merge ) && $merge( $source_directory_path . '/' . $file, $destination_directory_path . '/' . $file ) ) ) {
+					continue;
+				}
+				// If $merge a boolean and true, skip the file.
+				if ( is_bool( $merge ) && true === $merge ) {
+					continue;
+				}
 			}
 
 			// Copy the file.

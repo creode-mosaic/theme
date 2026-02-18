@@ -1,3 +1,7 @@
+/**
+ * #mosaic-theme-generated: Mosaic Theme manages this file and may overwrite the file unless this comment is removed.
+ */
+
 @use '../globals';
 
 @mixin left($add-padding: true, $minimum: 0px, $outer-width: globals.$maximum-width-outer) {

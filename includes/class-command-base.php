@@ -19,7 +19,7 @@ abstract class Command_Base {
 	 *
 	 * @var string
 	 */
-	private $name_prefix = 'creode-theme:';
+	private $name_prefix = 'mosaic-theme:';
 
 	/**
 	 * Returns the name of the command.

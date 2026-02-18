@@ -33,7 +33,7 @@ class Build_Command extends Command_Base {
 	 * ## EXAMPLES
 	 *
 	 *     # Build assets for all installed themes
-	 *     $ wp creode-theme:build
+	 *     $ wp mosaic-theme:build
 	 *
 	 * @param array $args Not used.
 	 * @param array $assoc_args Not used.
