@@ -114,14 +114,10 @@ class Installer {
 	 */
 	private function should_merge( string $destination_file_path ): bool {
 		// Get the file contents.
-		$contents = file_get_contents( $destination_file_path );
+		$contents = file_get_contents( $destination_file_path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 
 		// Return false if the file contains the comment string.
-		if ( str_contains( $contents, $this->generated_comment_string ) ) {
-			return false;
-		}
-
-		return true;
+		return ! str_contains( $contents, $this->generated_comment_string );
 	}
 
 	/**

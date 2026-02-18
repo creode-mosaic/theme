@@ -44,7 +44,11 @@ final class Helpers {
 
 			if ( file_exists( $destination_directory_path . '/' . $file ) ) {
 				// If $merge is a callable, call it to determine if the file should be merged.
-				if ( ( is_callable( $merge ) && $merge( $source_directory_path . '/' . $file, $destination_directory_path . '/' . $file ) ) || ( true === $merge ) ) {
+				if ( ( is_callable( $merge ) && $merge( $source_directory_path . '/' . $file, $destination_directory_path . '/' . $file ) ) ) {
+					continue;
+				}
+				// If $merge a boolean and true, skip the file.
+				if ( is_bool( $merge ) && true === $merge ) {
 					continue;
 				}
 			}
