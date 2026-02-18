@@ -14,8 +14,8 @@
 // Use blocks
 @use '/blocks/all' as blocks;
 
-// Use admin extra
-@use 'admin-extra';
+// Use admin global
+@use 'admin-global';
 
 .edit-post-visual-editor,
 .edit-site-style-book__example-preview,
@@ -30,5 +30,5 @@
 	@include blocks.render;
 }
 
-// Render admin extra
-@include admin-extra.render;
+// Render admin global
+@include admin-global.render;
