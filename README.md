@@ -24,8 +24,8 @@ The plugin provides two WP-CLI commands for theme management:
 
 | Command | Description |
 |---------|-------------|
-| `wp creode-theme:install` | Installs framework files into your active theme (or a specified theme) |
-| `wp creode-theme:build` | Compiles assets (SCSS/JS) for all active themes |
+| `wp mosaic-theme:install` | Installs framework files into your active theme (or a specified theme) |
+| `wp mosaic-theme:build` | Compiles assets (SCSS/JS) for all active themes |
 
 
 ### Asset Compilation
@@ -97,7 +97,7 @@ blockStyleModifier.removeStyle('core/button', 'outline');
 
 ### Theme Template
 
-When running `wp creode-theme:install`, a basic theme structure is scaffolded within the active theme.
+When running `wp mosaic-theme:install`, a basic theme structure is scaffolded within the active theme.
 
 ## Requirements
 
