@@ -41,6 +41,15 @@ export default defineConfig({
             ]
           },
           {
+            text: 'Integrations',
+            items: [
+              {
+                text: 'Google Tag Manager',
+                link: '/integrations/google-tag-manager'
+              }
+            ]
+          },
+          {
             text: 'JavaScript Libraries',
             link: '/js-libraries',
             items: [
